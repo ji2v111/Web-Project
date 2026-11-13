@@ -1,0 +1,141 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+
+/*colours*/
+:root {
+    --primary-color: #0a4c88;
+    --secondry-color: #a1f1fd;
+    --third-color: #f5f5f5;
+    --fourth-color: #cfcece;
+}
+
+
+
+/*Page Structure*/
+.Page {
+    display: flex;
+    height: 100vh;
+}
+
+
+
+
+
+
+/*Sidebar and its elements*/
+.sidebar {
+    width: 13%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+
+    font-size: x-large;
+    padding: 0 0;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.411);
+    margin-top: 0px;
+}
+
+.sidebar a {
+    width: 99%;
+    color: var(--secondry-color);
+    padding: 17px 2px;
+    font-weight: bold;
+    font-size: larger;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.sidebar a:visited {
+    color: var(--secondry-color);
+
+}
+
+.sidebar a.txt:hover {
+    background-color: var(--secondry-color);
+    color: var(--primary-color);
+
+}
+
+.roadmap-icon {
+
+    height: 165px;
+    object-fit: contain;
+    width: 100%;
+    padding-bottom: 40px;
+
+}
+
+
+
+
+/*Content Part*/
+#content {
+    width: 100%;
+}
+
+
+
+
+
+/*home Page*/
+#main {
+    width: 75%;
+    height: 75%;
+    align-self: center;
+    justify-self: center;
+    margin-top: 125px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    border: rgb(73, 73, 73) solid 1px;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.411);
+
+}
+
+
+
+#info {
+    width: 50%;
+    height: 80%;
+    border: rgb(255, 255, 255) solid 1px;
+    margin-top: 6%;
+    /* يحركه لأسفل بمقدار 20 بكسل */
+    margin-left: 6%;
+    background-color: var(--third-color);
+    border-radius: 10px;
+}
+
+#features {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 34%;
+    height: 80%;
+    margin-top: 6%;
+    margin-right: 6%;
+
+
+}
+
+._features {
+    border: rgb(255, 255, 255) solid 1px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--third-color);
+    border-radius: 10px;
+
+
+}
