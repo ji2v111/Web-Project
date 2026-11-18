@@ -139,3 +139,242 @@ body {
 
 
 }
+
+
+
+
+
+/* ===== Shared styles for Roadmaps / Roadmap Details / Courses ===== */
+.content-page {
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 30px 40px;
+    background-color: var(--third-color);
+}
+
+.page-title {
+    color: var(--primary-color);
+    margin: 0 0 5px 0;
+}
+
+.page-sub {
+    color: #555;
+    margin: 0 0 25px 0;
+}
+
+.content-page a {
+    color: var(--primary-color);
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--secondry-color);
+    color: var(--primary-color);
+    font-size: small;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #083a69;
+}
+
+/* Cards grid (CSS Grid, Chapter 7) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    align-items: start; /* only the hovered card grows */
+}
+
+/* Roadmap cards */
+.roadmap-card {
+    display: block;
+    background-color: var(--primary-color);
+    color: white !important;
+    border-radius: 10px;
+    padding: 20px;
+    text-decoration: none;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.411);
+    transition: transform 0.2s;
+}
+
+.roadmap-card:hover {
+    transform: translateY(-5px);
+}
+
+.roadmap-card h3 {
+    margin-top: 0;
+    color: var(--secondry-color);
+}
+
+/* Course filter chips */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.chip {
+    border: var(--primary-color) solid 1px;
+    border-radius: 20px;
+    padding: 6px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.chip:hover,
+.chip.selected {
+    background-color: var(--primary-color);
+    color: white !important;
+}
+
+/* Course cards: expand on hover / click / keyboard focus / link target */
+.course-card {
+    background-color: white;
+    border: var(--fourth-color) solid 1px;
+    border-top: var(--primary-color) solid 5px;
+    border-radius: 10px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+
+.course-card:hover,
+.course-card:focus,
+.course-card.open,
+.course-card:target {
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.411);
+}
+
+.course-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.course-head h3 {
+    margin: 0 0 8px 0;
+    color: var(--primary-color);
+}
+
+.course-more {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s, opacity 0.4s;
+}
+
+.course-card:hover .course-more,
+.course-card:focus .course-more,
+.course-card.open .course-more,
+.course-card:target .course-more {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.course-more ul {
+    padding-left: 20px;
+}
+
+.course-more .meta {
+    font-size: small;
+    color: #555;
+}
+
+/* Roadmap details: stages */
+.stages {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.stage {
+    display: flex;
+    gap: 20px;
+}
+
+.stage-number {
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--secondry-color);
+    font-weight: bold;
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stage-body {
+    flex: 1;
+    background-color: white;
+    border: var(--fourth-color) solid 1px;
+    border-radius: 10px;
+    padding: 5px 20px 20px 20px;
+}
+
+.stage-body h2 {
+    color: var(--primary-color);
+}
+
+.stage-courses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.stage-course {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    color: white !important;
+    padding: 12px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    min-width: 200px;
+}
+
+.stage-course span {
+    color: var(--secondry-color);
+    font-size: small;
+}
+
+.stage-course:hover {
+    background-color: #083a69;
+}
+
+/* Courses page: 4 equal columns (fixed, cards never stretch to full width) */
+#courses-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1200px) {
+    #courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    #courses-grid {
+        grid-template-columns: 1fr;
+    }
+}
