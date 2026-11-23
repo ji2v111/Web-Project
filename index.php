@@ -1,4 +1,6 @@
 <?php
+// خريطة الصفحات المسموح بها: اسم في الرابط => ملف داخل pages/
+// (حماية: لا نعرض أي ملف يكتبه المستخدم)
 $pages = [
     'home'            => 'home',    // pages/home.php
     'roadmaps'        => 'page1',   // pages/page1.php  
