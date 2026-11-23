@@ -1,10 +1,31 @@
 <?php
-// فلتر المسار من الرابط: ?page=courses&roadmap=frontend
+// Roadmap filter from the link: ?page=courses&roadmap=cs
 $filter = $_GET['roadmap'] ?? 'all';
 
-function showCourse($filter, $roadmaps) {
-    return $filter === 'all' || in_array($filter, explode(' ', $roadmaps));
+// The roadmaps we have (key => name)
+$names = [
+    'it'             => 'IT',
+    'cs'             => 'Computer Science',
+    'data-science'   => 'Data Science',
+    'cyber-security' => 'Cyber Security'
+];
+
+// If the filter is not in the list, show all courses
+if ($filter !== 'all' && !isset($names[$filter])) {
+    $filter = 'all';
 }
+
+// Open the SQLite database and get the courses
+$db = new PDO('sqlite:database/roadmaps.db');
+
+if ($filter === 'all') {
+    $query = $db->prepare('SELECT * FROM courses ORDER BY roadmap, step');
+    $query->execute();
+} else {
+    $query = $db->prepare('SELECT * FROM courses WHERE roadmap = ? ORDER BY step');
+    $query->execute([$filter]);
+}
+$courses = $query->fetchAll();
 ?>
 <div class="content-page">
     <h1 class="page-title">Courses</h1>
@@ -13,25 +34,27 @@ function showCourse($filter, $roadmaps) {
     <!-- Roadmap filter -->
     <div class="filters">
         <a href="index.php?page=courses" class="chip <?php if ($filter === 'all') echo 'selected'; ?>">All</a>
+        <?php foreach ($names as $key => $name) { ?>
+            <a href="index.php?page=courses&roadmap=<?php echo $key; ?>" class="chip <?php if ($filter === $key) echo 'selected'; ?>"><?php echo $name; ?></a>
+        <?php } ?>
     </div>
 
+    <!-- One card for each course from the database -->
     <div id="courses-grid">
-        <?php if (showCourse($filter, 'frontend fullstack')) { ?>
-        <article class="course-card" id="course-ID" tabindex="0">
+        <?php foreach ($courses as $course) { ?>
+        <article class="course-card" id="course-<?php echo $course['id']; ?>" tabindex="0">
             <div class="course-head">
-                <h3>Course title</h3>
-                <span class="badge">Level</span>
+                <h3><?php echo htmlspecialchars($course['title']); ?></h3>
+                <span class="badge"><?php echo htmlspecialchars($course['level']); ?></span>
             </div>
-            <p>Short summary.</p>
+            <p><?php echo htmlspecialchars($course['provider']); ?></p>
 
             <div class="course-more">
-                <p>Full description.</p>
-                <ul>
-                    <li>Topic 1</li>
-                    <li>Topic 2</li>
-                </ul>
-                <p class="meta">Duration: ... &middot; Interest: ...</p>
-                <p class="meta">Roadmaps: <a href="index.php?page=roadmaps">Roadmap name</a></p>
+                <p class="meta">Step <?php echo $course['step']; ?> in the path</p>
+                <p class="meta">Roadmap:
+                    <a href="index.php?page=roadmap-details&roadmap=<?php echo $course['roadmap']; ?>"><?php echo $names[$course['roadmap']]; ?></a>
+                </p>
+                <p><a href="<?php echo htmlspecialchars($course['link']); ?>" target="_blank">Open official course page</a></p>
             </div>
         </article>
         <?php } ?>
