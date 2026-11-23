@@ -17,6 +17,9 @@ Web application for students use to explore academic paths with suggested roadma
 Web-Project/
 ├── css/                 
 │   ├── style.css           # The style of UI          
+├── database/               # SQLite database of roadmaps and courses
+│   ├── roadmaps.sql        # Tables + data (readable)
+│   ├── roadmaps.db         # The database file PHP reads
 ├── images/                 # Icons and images
 ├── includes/               # For static elements such as sidebar
 │   ├── sidebar.php
@@ -26,7 +29,8 @@ Web-Project/
 │   ├── Home.php
 │   ├── page1.php
 │   ├── page2.php
-│   └── page3.php
+│   ├── page3.php
+│   └── page4.php           # Info page
 ├── index.php               # Main layout shell for dynamic pages 
 └── README.md               # Documentation 
 ```
