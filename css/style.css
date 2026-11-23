@@ -61,7 +61,8 @@ body {
 
 }
 
-.sidebar a.txt:hover {
+.sidebar a.txt:hover,
+.sidebar a.txt.active {
     background-color: var(--secondry-color);
     color: var(--primary-color);
 
@@ -206,4 +207,141 @@ body {
     color: #333333;
     font-size: 15px;
     font-weight: 600;
+
+
+
+
+/* ===== Shared styles for Roadmaps / Roadmap Details / Courses ===== */
+.content-page {
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 30px 40px;
+    background-color: var(--third-color);
+}
+
+.page-title {
+    color: var(--primary-color);
+    margin: 0 0 5px 0;
+}
+
+.page-sub {
+    color: #555;
+    margin: 0 0 25px 0;
+}
+
+.content-page a {
+    color: var(--primary-color);
+}
+
+
+
+
+
+/* Courses page (pages/page3.php) */
+
+/* Roadmap filter chips */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.chip {
+    border: var(--primary-color) solid 1px;
+    border-radius: 20px;
+    padding: 6px 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.chip:hover,
+.chip.selected {
+    background-color: var(--primary-color);
+    color: white !important;
+}
+
+/* Grid 4 equal columns */
+#courses-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: start; /* only the hovered card grows */
+}
+
+/* Course card expands on hover or click */
+.course-card {
+    background-color: white;
+    border: var(--fourth-color) solid 1px;
+    border-top: var(--primary-color) solid 5px;
+    border-radius: 10px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+
+.course-card:hover,
+.course-card:focus,
+.course-card:target {
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.411);
+}
+
+.course-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.course-head h3 {
+    margin: 0 0 8px 0;
+    color: var(--primary-color);
+}
+
+.course-head .badge {
+    background-color: var(--secondry-color);
+    color: var(--primary-color);
+    font-size: small;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+/* Hidden details */
+.course-more {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s, opacity 0.4s;
+}
+
+.course-card:hover .course-more,
+.course-card:focus .course-more,
+.course-card:target .course-more {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.course-more ul {
+    padding-left: 20px;
+}
+
+.course-more .meta {
+    font-size: small;
+    color: #555;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    #courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    #courses-grid {
+        grid-template-columns: 1fr;
+    }
+}
 }
