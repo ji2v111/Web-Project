@@ -2,7 +2,6 @@
 // فلتر المسار من الرابط: ?page=courses&roadmap=frontend
 $filter = $_GET['roadmap'] ?? 'all';
 
-// هل يظهر الكورس؟ (المسارات المرتبطة بالكورس تُكتب كنص: "frontend fullstack")
 function showCourse($filter, $roadmaps) {
     return $filter === 'all' || in_array($filter, explode(' ', $roadmaps));
 }
