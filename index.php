@@ -5,7 +5,8 @@ $pages = [
     'home'            => 'home',    // pages/home.php
     'roadmaps'        => 'page1',   // pages/page1.php  
     'roadmap-details' => 'page2',   // pages/page2.php  
-    'courses'         => 'page3'    // pages/page3.php  
+    'courses'         => 'page3',   // pages/page3.php  
+    'info'            => 'page4'    // pages/page4.php
 ];
 $page = $_GET['page'] ?? 'home';
 if (!isset($pages[$page])) {
