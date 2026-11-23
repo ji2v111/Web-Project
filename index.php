@@ -33,4 +33,4 @@ if (!isset($pages[$page])) {
 
         <script src="js/app.js"></script>
     </body>
-</html>
+</html> 
